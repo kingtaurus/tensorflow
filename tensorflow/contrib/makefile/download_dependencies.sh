@@ -19,6 +19,9 @@ DOWNLOADS_DIR=tensorflow/contrib/makefile/downloads
 mkdir ${DOWNLOADS_DIR}
 
 EIGEN_HASH=d02e6a705c30
+if [ -f eigen.BUILD]; then
+	EIGEN_HASH=$(cat eigen.BUILD | grep archive_dir | head -1 | cut -f3 -d- | cut -f1 -d\")
+fi
 curl "https://bitbucket.org/eigen/eigen/get/${EIGEN_HASH}.tar.gz" \
 -o /tmp/eigen-${EIGEN_HASH}.tar.gz
 tar xzf /tmp/eigen-${EIGEN_HASH}.tar.gz -C ${DOWNLOADS_DIR}

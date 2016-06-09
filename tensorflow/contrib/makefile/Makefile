@@ -36,7 +36,7 @@ HOST_BINDIR := $(MAKEFILE_DIR)/gen/host_bin/
 HOST_GENDIR := $(MAKEFILE_DIR)/gen/host_obj/
 
 # Which Eigen version we're using.
-EIGEN_HASH := d02e6a705c30
+EIGEN_HASH := $(shell cat eigen.BUILD | grep archive_dir | head -1 | cut -f3 -d- | cut -f1 -d\")
 
 # Settings for the host compiler.
 HOST_CXX := gcc
