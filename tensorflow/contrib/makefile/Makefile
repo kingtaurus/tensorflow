@@ -56,7 +56,7 @@ HOST_LIBS := \
 
 # If we're on Linux, also link in the dl library.
 ifeq ($(HOST_OS),LINUX)
-	HOST_LIBS += -ldl
+	HOST_LIBS += -ldl -lpthread
 endif
 
 # proto_text is a tool that converts protobufs into a form we can use more
@@ -125,7 +125,7 @@ ifeq ($(TARGET),LINUX)
 endif
 # If we're on Linux, also link in the dl library.
 ifeq ($(TARGET),LINUX)
-	LIBS += -ldl
+	LIBS += -ldl -lpthread
 endif
 # If we're cross-compiling for the Raspberry Pi, use the right gcc.
 ifeq ($(TARGET),PI)
